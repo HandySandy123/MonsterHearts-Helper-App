@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjxb2iuhn4br2"]
+
+[ext_resource type="Texture2D" uid="uid://ceoctr51w7qmy" path="res://img/icon.svg" id="1_r5j3p"]
+[ext_resource type="Script" path="res://Controls/Profile Image/ProfileImage.cs" id="2_b7hxr"]
+
+[node name="ProfileImage" type="TextureRect"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -157.0
+offset_right = -34.9999
+offset_bottom = -28.9999
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_r5j3p")
+script = ExtResource("2_b7hxr")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.009
+offset_right = -120.0
+offset_bottom = -121.152
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(16.0651, 16.1502)
+toggle_mode = true
+button_pressed = true
+flat = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(518, 360)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[connection signal="file_selected" from="FileDialog" to="." method="GetImagePath"]

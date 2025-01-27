@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1jsly767poor"]
+
+[ext_resource type="PackedScene" uid="uid://4wkea14ah017" path="res://Blender Productions/Table.blend" id="1_vyt7w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxxx3"]
+size = Vector3(2.22516, 0.105835, 3.39026)
+
+[node name="Table" type="Node3D"]
+
+[node name="Table" parent="." instance=ExtResource("1_vyt7w")]
+
+[node name="TableBody" type="RigidBody3D" parent="."]
+collision_layer = 3
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TableBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00765991, 0.0493774, 0.0100708)
+shape = SubResource("BoxShape3D_wxxx3")
