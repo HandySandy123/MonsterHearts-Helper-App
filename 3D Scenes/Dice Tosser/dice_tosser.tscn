@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://1r7x2vib5sq8"]
 
-[ext_resource type="Script" path="res://Controls/Dice Tosser/DiceToss.cs" id="1_l5x83"]
+[ext_resource type="Script" path="res://3D Scenes/Dice Tosser/DiceToss.cs" id="1_l5x83"]
 [ext_resource type="PackedScene" uid="uid://crpgcjo1gyjj2" path="res://3D Scenes/Dice/Dice.tscn" id="2_vk825"]
 
 [node name="DiceTosser" type="Node3D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b61lg5qmmc4f1"]
 
-[ext_resource type="PackedScene" uid="uid://1r7x2vib5sq8" path="res://Controls/Dice Tosser/dice_tosser.tscn" id="2_36a1a"]
+[ext_resource type="PackedScene" uid="uid://1r7x2vib5sq8" path="res://3D Scenes/Dice Tosser/dice_tosser.tscn" id="2_36a1a"]
 [ext_resource type="PackedScene" uid="uid://c1jsly767poor" path="res://3D Scenes/Table Surface.tscn" id="2_crrvm"]
 [ext_resource type="PackedScene" uid="uid://cjxb2iuhn4br2" path="res://Controls/Profile Image/Profile Image.tscn" id="3_qm80y"]
 [ext_resource type="PackedScene" uid="uid://cqoqtsetc875c" path="res://Controls/DiceRollButton/DiceRollutton.tscn" id="4_j3sqi"]
@@ -12,8 +12,10 @@ transform = Transform3D(-0.004073, -0.73527, 0.677762, -0.00290219, 0.677774, 0.
 
 [node name="Timer" type="Timer" parent="Camera3D"]
 
-[node name="DiceTosser" parent="Camera3D" instance=ExtResource("2_36a1a")]
+[node name="DiceTosser" parent="Camera3D" node_paths=PackedStringArray("rollButton") instance=ExtResource("2_36a1a")]
 transform = Transform3D(1, -2.32831e-10, -4.65661e-10, 1.16415e-10, 1, -2.34222e-08, -4.65661e-10, 6.38147e-09, 1, 0.00958286, -2.23797, -2.4278)
+scale = 0.0
+rollButton = NodePath("../../DiceRollButton")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.7934, 0)
@@ -29,9 +31,9 @@ offset_bottom = -30.9999
 
 [node name="DiceRollButton" parent="." node_paths=PackedStringArray("playScene") instance=ExtResource("4_j3sqi")]
 offset_left = -5.0
-offset_top = -1.0
+offset_top = 157.0
 offset_right = -5.0
-offset_bottom = -1.0
+offset_bottom = 157.0
 scale = Vector2(1.24123, 1.24123)
 playScene = NodePath("../Camera3D/DiceTosser")
 

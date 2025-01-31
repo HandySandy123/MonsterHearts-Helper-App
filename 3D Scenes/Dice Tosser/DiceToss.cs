@@ -6,6 +6,7 @@ public partial class DiceToss : Node3D
 	[Export] private PackedScene _dice;
 	[Export] private float scale;
 	[Export] private float rollFactor;
+	[Export] private DiceRollutton rollButton;
 	
 	private Vector3 diceScale;
 	private Dice _diceScriptOne;
@@ -14,8 +15,9 @@ public partial class DiceToss : Node3D
 	private Node3D diceOne;
 	private Node3D diceTwo;
 	private Random random = new Random();
-	private Timer _timer;
+	//private Timer _timer;
 
+	
 	public int diceRoll = 0;
 	
 	
@@ -24,31 +26,21 @@ public partial class DiceToss : Node3D
 	{
 		rollFactor += random.Next(100);
 		diceScale = new Vector3(scale, 0, scale);
-		_timer = GetNode<Timer>("Timer");
-		_timer.OneShot = false;
+		// _timer = GetNode<Timer>("Timer");
+		// _timer.OneShot = false;
 		//GD.Print(_dice != null);
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		// if (@event.IsActionPressed("ui_accept"))
-		// {
-		// 	_timer.Start();
-		// 	if (diceOne != null || diceTwo != null)
-		// 	{
-		// 		diceRoll = 0;
-		// 		diceOne.QueueFree();
-		// 		diceTwo.QueueFree();
-		// 	}
-		// 	ThrowDice();
-		// }
+		
 	}
 	
 
 	public void ThrowDice()
 	{
 		GD.Print("New Dice");
-		_timer.Start();
+		//_timer.Start();
 		if (diceOne != null || diceTwo != null)
 		{
 			diceRoll = 0; 
@@ -75,18 +67,19 @@ public partial class DiceToss : Node3D
 	
 		diceOne.Name = "DiceOne";
 		diceTwo.Name = "DiceTwo";
+		
+		GetDiceRoll(_diceScriptOne.diceResult, _diceScriptTwo.diceResult);
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 	}
 
-	public void GetDiceRoll()
+	public void GetDiceRoll(int diceOneResult, int diceTwoResult)
 	{
-		if (!_diceScriptOne.isMoving && !_diceScriptTwo.isMoving)
-		{
-			diceRoll = _diceScriptOne.GetDiceRoll() + _diceScriptTwo.GetDiceRoll();
-		}
+		diceRoll = diceOneResult + diceTwoResult;
+		rollButton.printResults(diceRoll);
+		GD.Print(diceRoll);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

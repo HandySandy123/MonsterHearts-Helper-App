@@ -11,9 +11,27 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = 47.0
+offset_bottom = 47.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_jgwcc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -167.0
+offset_right = -94.0
+offset_bottom = -127.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(3.26667, 3.77778)
+color = Color(0.213069, 0.20902, 0.231896, 1)
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -23,9 +41,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -125.0
-offset_top = 7.0
+offset_top = 5.0
 offset_right = 1795.0
-offset_bottom = 1444.0
+offset_bottom = 1446.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.0597372, 0.0597372)
@@ -42,6 +60,14 @@ fit_content = true
 layout_mode = 2
 texture = ExtResource("1_ecqh2")
 
+[node name="ResultText" type="RichTextLabel" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hwopc")
+theme_override_font_sizes/normal_font_size = 246
+bbcode_enabled = true
+text = "[center] "
+fit_content = true
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 6
@@ -49,13 +75,13 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -4.0
-offset_right = -112.0
-offset_bottom = 4.0
+offset_left = -119.0
+offset_top = -142.0
+offset_right = -111.0
+offset_bottom = -133.0
 grow_horizontal = 0
 grow_vertical = 2
-scale = Vector2(13.1624, 13.1624)
+scale = Vector2(13.1624, 13.3781)
 flat = true
 
 [connection signal="pressed" from="Button" to="." method="OnButtonPressed"]

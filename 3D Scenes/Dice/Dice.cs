@@ -9,28 +9,43 @@ public partial class Dice : Node3D
 	[Export] private Vector3 angularVelocity = Vector3.One;
 	[Export] private float linearVelocity = 1.0f;
 	[Export] private PackedScene table;
+	[Export] private double waitTime = 1;
+	[Export] private float rotationWeight;
 
+	private Random random = new Random();
 	private Vector3 pos;
 	private Vector3 oldPos;
+	private DiceToss diceToss;
+	private Timer _timer;
 	
  	public RigidBody3D diceRigidBody;
-    public bool isMoving;
+	public bool isMoving;
+	public int diceResult;
 
-    
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_timer = new Timer();
+		_timer.OneShot = true;
+		_timer.WaitTime = waitTime;
+		AddChild(_timer);
+		
 		diceRigidBody = GetNode<RigidBody3D>("DiceRigidBody");
 		diceRigidBody.AngularVelocity += angularVelocity;
 		diceRigidBody.LinearVelocity += Vector3.One + new Vector3(linearVelocity, 0, 0);
 		
+		diceToss = GetParent<DiceToss>();
+		GD.Print(diceToss != null ? "DiceToss is real" : "DiceToss does not exist");
+		
 		pos = diceRigidBody.GlobalPosition;
 		oldPos = diceRigidBody.GlobalPosition;
+		
+		rotationWeight = (float) random.NextDouble();
 		
 		foreach (RayCast3D ray in rays)
 		{
 			ray.CollideWithBodies = true;
-			
 		}
 	}
 
@@ -43,13 +58,18 @@ public partial class Dice : Node3D
 		if (oldPos == pos)
 		{
 			isMoving = false;
+			_timer.Start(waitTime);
+			if (_timer.TimeLeft == 0)
+			{
+				diceResult = GetDiceRoll();
+			}
 		}
 		else
 		{
 			isMoving = true;
 		}
-
 		oldPos = pos;
+		
 	}
 
 	public int GetDiceRoll()
@@ -58,7 +78,6 @@ public partial class Dice : Node3D
 		{
 			if (rays[i].IsColliding())
 			{
-				GD.Print(7 - (i + 1));
 				return 7 - (i + 1);
 			}
 		}
@@ -66,10 +85,8 @@ public partial class Dice : Node3D
 	}
 	public override void _PhysicsProcess(double delta) 
 	{
-		
-		
-		angularVelocity.X *= (float) Mathf.LerpAngle(1, 0, 0.8);
-		angularVelocity.Y *= (float) Mathf.LerpAngle(1, 0, 0.8);
-		angularVelocity.Z *= (float) Mathf.LerpAngle(1, 0, 0.8);
+		angularVelocity.X *= (float) Mathf.LerpAngle(1, 0, rotationWeight);
+		angularVelocity.Y *= (float) Mathf.LerpAngle(1, 0, rotationWeight);
+		angularVelocity.Z *= (float) Mathf.LerpAngle(1, 0, rotationWeight);
 	}
 }

@@ -1,0 +1,12 @@
+# Blender 4.3.2 MTL File: 'Table.blend'
+# www.blender.org
+
+newmtl Wood
+Ka 0.300000 0.300000 0.300000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd -s 3 3 3 C:/Users/Sandra Bach/Documents/blenderkit_data/materials/wood_f56e42ae-559b-47ca-add0-f6a56a1ef1d7/textures_2k/wood-90_diffuse.jpg
+map_Ns -s 3 3 3 C:/Users/Sandra Bach/Documents/blenderkit_data/materials/wood_f56e42ae-559b-47ca-add0-f6a56a1ef1d7/textures_2k/wood-90_smooth.jpg

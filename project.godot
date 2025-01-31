@@ -23,6 +23,10 @@ window/subwindows/embed_subwindows=false
 
 project/assembly_name="MonsterHearts Helper"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ChangeImage={
