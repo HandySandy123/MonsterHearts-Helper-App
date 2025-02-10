@@ -6,19 +6,18 @@ public partial class DiceToss : Node3D
 	[Export] private PackedScene _dice;
 	[Export] private float scale;
 	[Export] private float rollFactor;
-	[Export] private DiceRollutton rollButton;
+	
+	[Export] public DiceRollutton rollButton;
 	
 	private Vector3 diceScale;
-	private Dice _diceScriptOne;
-	private Dice _diceScriptTwo;
+	private Dice _diceScriptOne, _diceScriptTwo;
 	private Vector3 forward = Vector3.Forward;
-	private Node3D diceOne;
-	private Node3D diceTwo;
 	private Random random = new Random();
-	//private Timer _timer;
+	private int stoppedDice = 0;
+	private bool readyToPrint;
 
-	
 	public int diceRoll = 0;
+	public Node3D diceOne, diceTwo;
 	
 	
 	// Called when the node enters the scene tree for the first time.
@@ -26,20 +25,14 @@ public partial class DiceToss : Node3D
 	{
 		rollFactor += random.Next(100);
 		diceScale = new Vector3(scale, 0, scale);
-		// _timer = GetNode<Timer>("Timer");
-		// _timer.OneShot = false;
-		//GD.Print(_dice != null);
-	}
-
-	public override void _Input(InputEvent @event)
-	{
-		
 	}
 	
-
 	public void ThrowDice()
 	{
 		GD.Print("New Dice");
+		diceRoll = 0;
+		stoppedDice = 0;
+		
 		//_timer.Start();
 		if (diceOne != null || diceTwo != null)
 		{
@@ -67,24 +60,27 @@ public partial class DiceToss : Node3D
 	
 		diceOne.Name = "DiceOne";
 		diceTwo.Name = "DiceTwo";
-		
-		GetDiceRoll(_diceScriptOne.diceResult, _diceScriptTwo.diceResult);
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public void UpdateRoll(int roll)
 	{
-	}
-
-	public void GetDiceRoll(int diceOneResult, int diceTwoResult)
-	{
-		diceRoll = diceOneResult + diceTwoResult;
+		diceRoll = roll;
 		rollButton.printResults(diceRoll);
-		GD.Print(diceRoll);
 	}
-
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
+		if (_diceScriptOne.isMoving == false && _diceScriptTwo.isMoving == false)
+		{
+			readyToPrint = true;
+		}
 
+		if (readyToPrint)
+		{
+			UpdateRoll(_diceScriptOne.GetDiceRoll() + _diceScriptTwo.GetDiceRoll());
+			readyToPrint = false;
+		}
 	}
 }

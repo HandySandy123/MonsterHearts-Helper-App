@@ -6,4 +6,8 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>MonsterHeartsHelper</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Player\" />
+    <Folder Include="Multiplayer\" />
+  </ItemGroup>
 </Project>

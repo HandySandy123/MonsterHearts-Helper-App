@@ -1,0 +1,325 @@
+[gd_scene load_steps=5 format=3 uid="uid://2uvfawj3u3w4"]
+
+[ext_resource type="Script" path="res://Controls/Pop-up menus/Basic Moves/Moves.cs" id="1_yb1gu"]
+[ext_resource type="Texture2D" uid="uid://bycmkevm5jqvc" path="res://img/Pullout Menus/IMG_0022.PNG" id="2_wkvky"]
+[ext_resource type="Texture2D" uid="uid://boxfbc78hjucd" path="res://img/Pullout Menus/IMG_0013.PNG" id="3_g5rod"]
+[ext_resource type="FontFile" uid="uid://du62bt8w674o3" path="res://Fonts/arcane_nine/Arcane Nine.otf" id="4_yxfst"]
+
+[node name="BasicMoves" type="Control" node_paths=PackedStringArray("_labels")]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+script = ExtResource("1_yb1gu")
+_menuSize = 0.7
+_lerpSpeed = 0.82
+textColor = Color(0.845497, 0.84938, 0.967424, 1)
+_labels = [NodePath("HBoxContainer/NinePatchRect/Turn Someone On"), NodePath("HBoxContainer/NinePatchRect/Shut Someone Down"), NodePath("HBoxContainer/NinePatchRect/Keep Your Cool"), NodePath("HBoxContainer/NinePatchRect/Last Out Physically"), NodePath("HBoxContainer/NinePatchRect/Run Away"), NodePath("HBoxContainer/NinePatchRect/Gaze Into The Abyss"), NodePath("HBoxContainer/NinePatchRect/Experience"), NodePath("HBoxContainer/NinePatchRect/Pulling Strings"), NodePath("HBoxContainer/NinePatchRect/Healing"), NodePath("HBoxContainer/NinePatchRect/Skirting Death"), NodePath("HBoxContainer/NinePatchRect/Condititions"), NodePath("HBoxContainer/NinePatchRect/Gangs")]
+metadata/_edit_pinned_properties_ = [&"textColor", &"_menuSize"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -274.0
+offset_right = 1130.0
+offset_bottom = 404.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.775614, 0.775614)
+theme_override_constants/separation = 0
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(51.595, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("2_wkvky")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(1119.01, 678.915)
+layout_mode = 2
+texture = ExtResource("3_g5rod")
+
+[node name="Turn Someone On" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 42.0
+offset_right = 376.0
+offset_bottom = 207.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Turn Someone On[/u][/b][/center]
+When you turn someone on, roll with Hot. On a
+10 up, gain a String on them and they choose a
+reaction from below. • On a 7-9, they can either
+give you a String or choose one of the reactions.
+ I give myself to you,
+ I promise something I think you want, or
+ I get embarrassed and act awkward."
+
+[node name="Turn Someone On" type="Button" parent="HBoxContainer/NinePatchRect/Turn Someone On"]
+layout_mode = 0
+offset_left = -4.52184
+offset_top = -5.53382
+offset_right = 3.47816
+offset_bottom = 2.46618
+scale = Vector2(44.6263, 21.9048)
+flat = true
+
+[node name="Shut Someone Down" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 236.0
+offset_right = 375.0
+offset_bottom = 431.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Shut Someone Down[/u][/b][/center]
+When you shut someone down, roll with Cold. On
+a 10 up, choose one from below. • On a 7-9, choose
+one from below, but you come across poorly, and
+they give you a Condition in return.
+ They lose a String on you,
+ If they have no Strings on you, gain one on them,
+ They gain a Condition, or
+ You take 1 Forward."
+
+[node name="Shut Someone Down" type="Button" parent="HBoxContainer/NinePatchRect/Shut Someone Down"]
+layout_mode = 0
+offset_left = -4.52185
+offset_top = 1.70551
+offset_right = 3.47815
+offset_bottom = 9.70551
+scale = Vector2(44.6263, 21.9048)
+flat = true
+
+[node name="Keep Your Cool" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 454.0
+offset_right = 375.0
+offset_bottom = 636.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Keep Your Cool[/u][/b][/center]
+When you keep your cool and act despite fear,
+name what you’re afraid of and roll with Cold. On
+a 10 up, you keep your cool and gain insight: ask
+the MC a question about the situation and take 1
+Forward to acting on that information. • On a 7-9,
+the MC will tell you how your actions would leave
+you vulnerable, and you can choose to back down
+or go through with it."
+
+[node name="Keep Your Cool" type="Button" parent="HBoxContainer/NinePatchRect/Keep Your Cool"]
+layout_mode = 0
+offset_left = -7.52173
+offset_top = 2.50259
+offset_right = 0.478271
+offset_bottom = 10.5026
+scale = Vector2(44.6263, 21.9048)
+flat = true
+
+[node name="Last Out Physically" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 44.0
+offset_right = 730.0
+offset_bottom = 226.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Lash Out Physically[/u][/b][/center]
+When you lash out physically, roll with Volatile.
+On a 10 up, you deal them harm, and they choke
+up momentarily before they can react. • On a 7-9,
+you harm them but choose one:
+ They learn something about your true nature
+and gain a String on you,
+ The MC decides how bad the harm turns out,
+ You become your Darkest Self."
+
+[node name="Lash Out Physically" type="Button" parent="HBoxContainer/NinePatchRect/Last Out Physically"]
+layout_mode = 0
+offset_left = -7.86002
+offset_top = -0.780792
+offset_right = 0.139984
+offset_bottom = 7.21921
+scale = Vector2(43.816, 22.2829)
+flat = true
+
+[node name="Run Away" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 253.0
+offset_right = 734.0
+offset_bottom = 400.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Run Away[/u][/b][/center]
+When you run away, roll with Volatile. On a 10
+up, you get away to a safe place. On a 7-9, you get
+away but choose one:
+ You run into something worse,
+ You cause a big scene, or
+ You leave something behind."
+
+[node name="Run Away" type="Button" parent="HBoxContainer/NinePatchRect/Run Away"]
+layout_mode = 0
+offset_left = -7.85994
+offset_top = 0.912689
+offset_right = 0.140058
+offset_bottom = 8.91269
+scale = Vector2(43.816, 17.961)
+flat = true
+
+[node name="Gaze Into The Abyss" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 421.0
+offset_right = 713.0
+offset_bottom = 566.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Gaze Into the Abyss[/u][/b][/center]
+When you gaze into the abyss, name what you’re
+looking for and roll with Dark. On a 10 up, the
+abyss shows you lucid visions, and you take 1
+Forward to addressing them. On a 7-9, the abyss
+shows you confusing and alarming visions, but
+you get your answer nonetheless."
+
+[node name="Gaze Into The Abyss" type="Button" parent="HBoxContainer/NinePatchRect/Gaze Into The Abyss"]
+layout_mode = 0
+offset_left = -7.85999
+offset_top = -0.963562
+offset_right = 0.140015
+offset_bottom = 7.03644
+scale = Vector2(43.816, 17.961)
+flat = true
+
+[node name="Experience" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 610.0
+offset_right = 793.0
+offset_bottom = 805.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Experience[/u][/b][/center]
+Whenever you fail a roll, mark experience."
+
+[node name="Pulling Strings" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 43.0
+offset_right = 1111.0
+offset_bottom = 188.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Pulling Strings[/u][/b][/center]
+When you spend a String on someone, choose one:
+ Tempt them to do what you want,
+ Give them a Condition,
+ Add 1 to your roll against them, or
+ Add 1 to the harm you deal them."
+
+[node name="Pulling Strings" type="Button" parent="HBoxContainer/NinePatchRect/Pulling Strings"]
+layout_mode = 0
+offset_left = -3.49695
+offset_top = 0.219177
+offset_right = 4.50305
+offset_bottom = 8.21918
+scale = Vector2(43.816, 15.638)
+flat = true
+
+[node name="Healing" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 194.0
+offset_right = 1100.0
+offset_bottom = 330.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Healing[/u][/b][/center]
+When you take time to tend to your wounds, once
+per session you may heal 1 Harm. If someone else is
+there with you, tending to your wounds delicately
+and intimately - and perhaps with erotic subtext -
+you may heal an additional 1 Harm."
+
+[node name="Healing" type="Button" parent="HBoxContainer/NinePatchRect/Healing"]
+layout_mode = 0
+offset_left = -3.49691
+offset_top = -0.864288
+offset_right = 4.50309
+offset_bottom = 7.13571
+scale = Vector2(43.816, 15.638)
+flat = true
+
+[node name="Skirting Death" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 338.0
+offset_right = 1072.0
+offset_bottom = 427.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Skirting Death[/u][/b][/center]
+To avoid death, erase all harm and choose one:
+ Become your Darkest Self,
+ Lose all Strings you have on everybody."
+
+[node name="Skirting Death" type="Button" parent="HBoxContainer/NinePatchRect/Skirting Death"]
+layout_mode = 0
+offset_left = -3.49683
+offset_top = -3.05138
+offset_right = 4.50317
+offset_bottom = 4.94862
+scale = Vector2(43.816, 11.208)
+flat = true
+
+[node name="Condititions" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 439.0
+offset_right = 1117.0
+offset_bottom = 548.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "[center][b][u]Conditions[/u][/b][/center]
+If you take advantage of someone’s Condition
+while making a move against them, add 1 to your
+roll. A Condition goes away when the character
+suffering it takes appropriate action to alleviate it."
+
+[node name="Conditions" type="Button" parent="HBoxContainer/NinePatchRect/Condititions"]
+layout_mode = 0
+offset_left = -3.49683
+offset_top = -2.75639
+offset_right = 4.50317
+offset_bottom = 5.24361
+scale = Vector2(45.7699, 13.3489)
+flat = true
+
+[node name="Gangs" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 567.0
+offset_right = 1099.0
+offset_bottom = 659.0
+theme_override_fonts/normal_font = ExtResource("4_yxfst")
+bbcode_enabled = true
+text = "
+[center][b][u]Gangs[/u][/b][/center]
+Gangs add +1 to your rolls and harm as applicable."
+
+[connection signal="pressed" from="HBoxContainer/TextureButton" to="." method="OnTextureButtonPressed"]

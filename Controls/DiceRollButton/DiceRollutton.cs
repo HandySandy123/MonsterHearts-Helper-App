@@ -9,6 +9,8 @@ public partial class DiceRollutton : Control
 	private DiceToss diceToss;
 	private int result;
 	private RichTextLabel resultText;
+	private string centerText = "[center] ";
+	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -21,12 +23,17 @@ public partial class DiceRollutton : Control
 
 	public void printResults(int result)
 	{
+		if (result <= 1)
+		{
+			resultText.Text = centerText;
+			return;
+		}
 		this.result = result;
-		resultText.Text += result;
+		resultText.Text = centerText + result;
 	}
 	public void OnButtonPressed()
 	{
-		resultText.Text = "[center] ";
+		resultText.Text = centerText;
 		diceToss.ThrowDice();
 		_button.ReleaseFocus();
 	}

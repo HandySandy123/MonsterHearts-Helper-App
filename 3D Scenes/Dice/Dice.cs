@@ -9,12 +9,12 @@ public partial class Dice : Node3D
 	[Export] private Vector3 angularVelocity = Vector3.One;
 	[Export] private float linearVelocity = 1.0f;
 	[Export] private PackedScene table;
-	[Export] private double waitTime = 1;
+	[Export] private double waitTime = 0.5f;
 	[Export] private float rotationWeight;
 
+	private DiceRollutton rollButton;
 	private Random random = new Random();
-	private Vector3 pos;
-	private Vector3 oldPos;
+	private Vector3 pos, oldPos;
 	private DiceToss diceToss;
 	private Timer _timer;
 	
@@ -26,17 +26,18 @@ public partial class Dice : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		diceToss = GetParent<DiceToss>();
+		rollButton = diceToss.rollButton;
+		
 		_timer = new Timer();
-		_timer.OneShot = true;
 		_timer.WaitTime = waitTime;
+		_timer.Start();
+		
 		AddChild(_timer);
 		
 		diceRigidBody = GetNode<RigidBody3D>("DiceRigidBody");
 		diceRigidBody.AngularVelocity += angularVelocity;
 		diceRigidBody.LinearVelocity += Vector3.One + new Vector3(linearVelocity, 0, 0);
-		
-		diceToss = GetParent<DiceToss>();
-		GD.Print(diceToss != null ? "DiceToss is real" : "DiceToss does not exist");
 		
 		pos = diceRigidBody.GlobalPosition;
 		oldPos = diceRigidBody.GlobalPosition;
@@ -52,24 +53,26 @@ public partial class Dice : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
 		pos = diceRigidBody.GlobalPosition;
-		
+		//GD.Print(isMoving);
+		if (_timer.TimeLeft <= 0)
+		{
+			CheckForMovement();
+		}
+	}
+
+	private void CheckForMovement()
+	{
 		if (oldPos == pos)
 		{
 			isMoving = false;
-			_timer.Start(waitTime);
-			if (_timer.TimeLeft == 0)
-			{
-				diceResult = GetDiceRoll();
-			}
 		}
 		else
 		{
 			isMoving = true;
 		}
+
 		oldPos = pos;
-		
 	}
 
 	public int GetDiceRoll()

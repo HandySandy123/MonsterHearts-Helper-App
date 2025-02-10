@@ -12,6 +12,7 @@ script = ExtResource("1_tkwyg")
 rays = [NodePath("DiceRigidBody/Dice/RayCast#1"), NodePath("DiceRigidBody/Dice/RayCast#2"), NodePath("DiceRigidBody/Dice/RayCast#3"), NodePath("DiceRigidBody/Dice/RayCast#4"), NodePath("DiceRigidBody/Dice/RayCast#5"), NodePath("DiceRigidBody/Dice/RayCast#6")]
 linearVelocity = -20.0
 table = ExtResource("2_6q5ci")
+waitTime = 5.0
 
 [node name="DiceRigidBody" type="RigidBody3D" parent="."]
 collision_mask = 3
