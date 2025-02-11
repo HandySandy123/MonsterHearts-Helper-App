@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://crpgcjo1gyjj2"]
+[gd_scene load_steps=4 format=3 uid="uid://crpgcjo1gyjj2"]
 
 [ext_resource type="Script" path="res://3D Scenes/Dice/Dice.cs" id="1_tkwyg"]
-[ext_resource type="ArrayMesh" uid="uid://cpbgw8r2lj3pj" path="res://Blender Productions/Table.obj" id="2_6q5ci"]
 [ext_resource type="PackedScene" uid="uid://bh2vgx5tjmvjp" path="res://Blender Productions/Dice.fbx" id="3_r4ysb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5o0f8"]
@@ -11,7 +10,6 @@ size = Vector3(2.00073, 1.98041, 2.01526)
 script = ExtResource("1_tkwyg")
 rays = [NodePath("DiceRigidBody/Dice/RayCast#1"), NodePath("DiceRigidBody/Dice/RayCast#2"), NodePath("DiceRigidBody/Dice/RayCast#3"), NodePath("DiceRigidBody/Dice/RayCast#4"), NodePath("DiceRigidBody/Dice/RayCast#5"), NodePath("DiceRigidBody/Dice/RayCast#6")]
 linearVelocity = -20.0
-table = ExtResource("2_6q5ci")
 waitTime = 5.0
 
 [node name="DiceRigidBody" type="RigidBody3D" parent="."]

@@ -1,12 +1,12 @@
 using Godot;
 using System;
 
-public partial class DiceRollutton : Control
+public partial class DiceRollButton : Control
 {
-	[Export] private Node3D playScene;
+	// [Export] private Node3D _diceTosser;
 
 	private Button _button;
-	private DiceToss diceToss;
+	[Export] private DiceToss diceToss;
 	private int result;
 	private RichTextLabel resultText;
 	private string centerText = "[center] ";
@@ -15,7 +15,7 @@ public partial class DiceRollutton : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		diceToss = playScene as DiceToss;
+		// diceToss = _diceTosser as DiceToss;
 		_button = GetNode<Button>("Button");
 		resultText = GetNode<RichTextLabel>("GridContainer/ResultText");
 		GD.Print(resultText.Name);

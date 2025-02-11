@@ -16,11 +16,10 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 script = ExtResource("1_yb1gu")
-_menuSize = 0.7
-_lerpSpeed = 0.82
+_menuSize = 0.75
 textColor = Color(0.845497, 0.84938, 0.967424, 1)
 _labels = [NodePath("HBoxContainer/NinePatchRect/Turn Someone On"), NodePath("HBoxContainer/NinePatchRect/Shut Someone Down"), NodePath("HBoxContainer/NinePatchRect/Keep Your Cool"), NodePath("HBoxContainer/NinePatchRect/Last Out Physically"), NodePath("HBoxContainer/NinePatchRect/Run Away"), NodePath("HBoxContainer/NinePatchRect/Gaze Into The Abyss"), NodePath("HBoxContainer/NinePatchRect/Experience"), NodePath("HBoxContainer/NinePatchRect/Pulling Strings"), NodePath("HBoxContainer/NinePatchRect/Healing"), NodePath("HBoxContainer/NinePatchRect/Skirting Death"), NodePath("HBoxContainer/NinePatchRect/Condititions"), NodePath("HBoxContainer/NinePatchRect/Gangs")]
-metadata/_edit_pinned_properties_ = [&"textColor", &"_menuSize"]
+metadata/_edit_pinned_properties_ = [&"textColor", &"_menuSize", &"_labels"]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

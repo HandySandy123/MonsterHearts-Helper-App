@@ -8,41 +8,33 @@ public partial class Dice : Node3D
 	[Export] private RayCast3D[] rays = new RayCast3D[6];
 	[Export] private Vector3 angularVelocity = Vector3.One;
 	[Export] private float linearVelocity = 1.0f;
-	[Export] private PackedScene table;
 	[Export] private double waitTime = 0.5f;
 	[Export] private float rotationWeight;
 
-	private DiceRollutton rollButton;
-	private Random random = new Random();
-	private Vector3 pos, oldPos;
-	private DiceToss diceToss;
-	private Timer _timer;
+	private DiceRollButton _rollButton;
+	private readonly Random _random = new Random();
+	private Vector3 _pos, _oldPos;
+	private DiceToss _diceToss;
 	
- 	public RigidBody3D diceRigidBody;
-	public bool isMoving;
-	public int diceResult;
+ 	public RigidBody3D DiceRigidBody;
+	public bool IsMoving;
+	public int DiceResult;
 
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		diceToss = GetParent<DiceToss>();
-		rollButton = diceToss.rollButton;
+		_diceToss = GetParent<DiceToss>();
+		_rollButton = _diceToss.rollButton;
 		
-		_timer = new Timer();
-		_timer.WaitTime = waitTime;
-		_timer.Start();
+		DiceRigidBody = GetNode<RigidBody3D>("DiceRigidBody");
+		DiceRigidBody.AngularVelocity += angularVelocity;
+		DiceRigidBody.LinearVelocity += Vector3.Forward + new Vector3(linearVelocity, 0, 0);
 		
-		AddChild(_timer);
+		_pos = DiceRigidBody.GlobalPosition;
+		_oldPos = DiceRigidBody.GlobalPosition;
 		
-		diceRigidBody = GetNode<RigidBody3D>("DiceRigidBody");
-		diceRigidBody.AngularVelocity += angularVelocity;
-		diceRigidBody.LinearVelocity += Vector3.One + new Vector3(linearVelocity, 0, 0);
-		
-		pos = diceRigidBody.GlobalPosition;
-		oldPos = diceRigidBody.GlobalPosition;
-		
-		rotationWeight = (float) random.NextDouble();
+		rotationWeight = (float) _random.NextDouble();
 		
 		foreach (RayCast3D ray in rays)
 		{
@@ -53,26 +45,22 @@ public partial class Dice : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		pos = diceRigidBody.GlobalPosition;
-		//GD.Print(isMoving);
-		if (_timer.TimeLeft <= 0)
-		{
-			CheckForMovement();
-		}
+		_pos = DiceRigidBody.GlobalPosition;
+		CheckForMovement();
 	}
 
 	private void CheckForMovement()
 	{
-		if (oldPos == pos)
+		if (_oldPos == _pos)
 		{
-			isMoving = false;
+			IsMoving = false;
 		}
 		else
 		{
-			isMoving = true;
+			IsMoving = true;
 		}
 
-		oldPos = pos;
+		_oldPos = _pos;
 	}
 
 	public int GetDiceRoll()

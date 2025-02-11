@@ -8,6 +8,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Controls\Player\" />
-    <Folder Include="Multiplayer\" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ using System.Linq;
 
 public partial class Moves : Control
 {
-	[Export] float _menuSize = 0.70f;
+	[Export] float _menuSize = 0.75f;
 	[Export] private float _lerpSpeed =  0.2f;
 	[Export] private Color textColor;
 	[Export] private RichTextLabel[] _labels;
@@ -35,6 +35,8 @@ public partial class Moves : Control
 	{
 		AnchorLeft = (float) Mathf.Lerp(AnchorLeft, _targetAnchor.X, _lerpSpeed);
 		AnchorRight = (float) Mathf.Lerp(AnchorRight, _targetAnchor.Y, _lerpSpeed);
+		// GD.Print("AnchorLeft: " + AnchorLeft);
+		// GD.Print("AnchorRight: " + AnchorRight);
 	}
 	
 	private void SetTextColor()

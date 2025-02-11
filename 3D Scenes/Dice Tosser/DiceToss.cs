@@ -7,7 +7,7 @@ public partial class DiceToss : Node3D
 	[Export] private float scale;
 	[Export] private float rollFactor;
 	
-	[Export] public DiceRollutton rollButton;
+	[Export] public DiceRollButton rollButton;
 	
 	private Vector3 diceScale;
 	private Dice _diceScriptOne, _diceScriptTwo;
@@ -15,6 +15,7 @@ public partial class DiceToss : Node3D
 	private Random random = new Random();
 	private int stoppedDice = 0;
 	private bool readyToPrint;
+	private Action _diceRolling;
 
 	public int diceRoll = 0;
 	public Node3D diceOne, diceTwo;
@@ -45,7 +46,9 @@ public partial class DiceToss : Node3D
 		diceTwo = (Node3D) _dice.Instantiate();
 		_diceScriptOne = diceOne as Dice;
 		_diceScriptTwo = diceTwo as Dice;
-
+		
+		_diceRolling += CheckForRoll;
+		
 		AddChild(diceOne);
 		AddChild(diceTwo);
 		
@@ -71,8 +74,12 @@ public partial class DiceToss : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
-		if (_diceScriptOne.isMoving == false && _diceScriptTwo.isMoving == false)
+		_diceRolling?.Invoke();
+	}
+
+	private void CheckForRoll()
+	{
+		if (_diceScriptOne.IsMoving == false && _diceScriptTwo.IsMoving == false)
 		{
 			readyToPrint = true;
 		}

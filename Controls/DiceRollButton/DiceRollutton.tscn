@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://breyohoo4hg8t" path="res://img/diceView.png" id="1_ecqh2"]
 [ext_resource type="FontFile" uid="uid://du62bt8w674o3" path="res://Fonts/arcane_nine/Arcane Nine.otf" id="1_hwopc"]
-[ext_resource type="Script" path="res://Controls/DiceRollButton/DiceRollutton.cs" id="1_jgwcc"]
+[ext_resource type="Script" path="res://Controls/DiceRollButton/DiceRollButton.cs" id="1_jgwcc"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

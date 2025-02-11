@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://crpgcjo1gyjj2" path="res://3D Scenes/Dice/Dice.tscn" id="2_vk825"]
 
 [node name="DiceTosser" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.2744, 0)
 script = ExtResource("1_l5x83")
 _dice = ExtResource("2_vk825")
 scale = 1.5
