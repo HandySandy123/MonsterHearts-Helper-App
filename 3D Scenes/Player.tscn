@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://caa4yrqjf24jc"]
+[gd_scene load_steps=8 format=3 uid="uid://caa4yrqjf24jc"]
 
 [ext_resource type="PackedScene" uid="uid://1r7x2vib5sq8" path="res://3D Scenes/Dice Tosser/dice_tosser.tscn" id="1_6lcjy"]
 [ext_resource type="Script" path="res://3D Scenes/Player.cs" id="1_awf1y"]
 [ext_resource type="PackedScene" uid="uid://cqoqtsetc875c" path="res://Controls/DiceRollButton/DiceRollutton.tscn" id="3_0an4m"]
 [ext_resource type="PackedScene" uid="uid://2uvfawj3u3w4" path="res://Controls/Pop-up menus/Basic Moves/Basic Moves.tscn" id="4_6q180"]
 [ext_resource type="PackedScene" uid="uid://cjxb2iuhn4br2" path="res://Controls/Profile Image/Profile Image.tscn" id="5_p3oe6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6627y"]
+albedo_color = Color(0.293301, 0.314539, 0.775074, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_csmnh"]
+material = SubResource("StandardMaterial3D_6627y")
 
 [node name="Camera3D" type="Camera3D"]
 script = ExtResource("1_awf1y")
@@ -13,7 +19,8 @@ script = ExtResource("1_awf1y")
 
 [node name="DiceTosser" parent="." node_paths=PackedStringArray("rollButton") instance=ExtResource("1_6lcjy")]
 transform = Transform3D(1, -2.32831e-10, -4.65661e-10, 1.16415e-10, 1, -2.34222e-08, -4.65661e-10, 6.38147e-09, 1, 0, 0, 0)
-scale = 0.0
+scale = 1.0
+rollFactor = 2.0
 rollButton = NodePath("../DiceRollButton")
 
 [node name="DiceRollButton" parent="." node_paths=PackedStringArray("diceToss") instance=ExtResource("3_0an4m")]
@@ -36,5 +43,8 @@ offset_right = -1.0
 offset_bottom = -9.0
 _diceTosser = NodePath("../DiceTosser")
 metadata/_edit_pinned_properties_ = [&"_diceTosser"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_csmnh")
 
 [connection signal="timeout" from="Timer" to="." method="DiceResult"]

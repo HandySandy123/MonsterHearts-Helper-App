@@ -9,13 +9,13 @@ size = Vector3(2.00073, 1.98041, 2.01526)
 [node name="Dice" type="Node3D" node_paths=PackedStringArray("rays")]
 script = ExtResource("1_tkwyg")
 rays = [NodePath("DiceRigidBody/Dice/RayCast#1"), NodePath("DiceRigidBody/Dice/RayCast#2"), NodePath("DiceRigidBody/Dice/RayCast#3"), NodePath("DiceRigidBody/Dice/RayCast#4"), NodePath("DiceRigidBody/Dice/RayCast#5"), NodePath("DiceRigidBody/Dice/RayCast#6")]
-linearVelocity = -20.0
-waitTime = 5.0
+linearVelocity = 2.97
+rotationWeight = 0.855
+metadata/_edit_pinned_properties_ = [&"rays"]
 
 [node name="DiceRigidBody" type="RigidBody3D" parent="."]
 collision_mask = 3
 mass = 0.03
-gravity_scale = 4.124
 max_contacts_reported = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiceRigidBody"]

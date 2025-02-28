@@ -27,9 +27,9 @@ public partial class Dice : Node3D
 		_diceToss = GetParent<DiceToss>();
 		_rollButton = _diceToss.rollButton;
 		
-		DiceRigidBody = GetNode<RigidBody3D>("DiceRigidBody");
-		DiceRigidBody.AngularVelocity += angularVelocity;
-		DiceRigidBody.LinearVelocity += Vector3.Forward + new Vector3(linearVelocity, 0, 0);
+		DiceRigidBody = this.GetNode<RigidBody3D>("DiceRigidBody");
+		GD.Print(DiceRigidBody.ToString());
+		DiceRigidBody.ApplyImpulse(Vector3.Forward * linearVelocity, Position);
 		
 		_pos = DiceRigidBody.GlobalPosition;
 		_oldPos = DiceRigidBody.GlobalPosition;
@@ -45,7 +45,7 @@ public partial class Dice : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_pos = DiceRigidBody.GlobalPosition;
+		_pos = DiceRigidBody.Position;
 		CheckForMovement();
 	}
 

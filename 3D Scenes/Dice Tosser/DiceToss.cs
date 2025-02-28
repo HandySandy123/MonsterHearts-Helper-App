@@ -44,13 +44,14 @@ public partial class DiceToss : Node3D
 		
 		diceOne = (Node3D) _dice.Instantiate();
 		diceTwo = (Node3D) _dice.Instantiate();
+		
 		_diceScriptOne = diceOne as Dice;
 		_diceScriptTwo = diceTwo as Dice;
 		
 		_diceRolling += CheckForRoll;
 		
-		AddChild(diceOne);
-		AddChild(diceTwo);
+		GetTree().CurrentScene.AddChild(diceOne);
+		GetTree().CurrentScene.AddChild(diceTwo);
 		
 		diceOne.Position = Position + diceScale;
 		diceTwo.Position = Position - diceScale;
